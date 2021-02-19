@@ -11,6 +11,10 @@ class MainTabbarController: UITabBarController {
     
     override func viewDidLoad() {
         view.backgroundColor = .gray
+        let photosVC = PhotosCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+        let favoritesVC = FavoritesViewController()
+        
+        viewControllers = [photosVC, favoritesVC]
     }
     
 }
