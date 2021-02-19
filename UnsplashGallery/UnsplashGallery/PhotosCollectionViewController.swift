@@ -5,4 +5,12 @@
 //  Created by Станислав Лемешаев on 19.02.2021.
 //
 
-import Foundation
+import UIKit
+
+class PhotosCollectionViewController: UICollectionViewController {
+    
+    override func viewDidLoad() {
+        collectionView.backgroundColor = .orange
+    }
+    
+}

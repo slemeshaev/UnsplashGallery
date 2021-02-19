@@ -5,4 +5,12 @@
 //  Created by Станислав Лемешаев on 20.02.2021.
 //
 
-import Foundation
+import UIKit
+
+class FavoritesViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        view.backgroundColor = .green
+    }
+    
+}
