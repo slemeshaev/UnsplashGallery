@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetworkService {
+final class NetworkService {
     
     // building a data request by URL
     func request(searchTerm: String, completion: @escaping (Data?, Error?) -> Void) {
