@@ -35,7 +35,7 @@ class PhotosViewController: UICollectionViewController {
         return barButtonItem
     }()
     
-    private var networkService = NetworkService()
+    private var networkDataFetcher = NetworkDataFetcher()
     
     // MARK: - Lifecycle
     
@@ -97,8 +97,10 @@ class PhotosViewController: UICollectionViewController {
 
 extension PhotosViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        networkService.request(searchTerm: searchText) { (_, _) in
-            print("123")
+        networkDataFetcher.fetchImages(searchTerm: searchText) { (searchResults) in
+            searchResults?.results.map({ (photo) in
+                print(photo.urls["small"])
+            })
         }
     }
 }
