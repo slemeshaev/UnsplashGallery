@@ -20,8 +20,8 @@ class MainTabbarController: UITabBarController {
     // MARK: - Helpers
     
     private func setupNavigationControllers() {
-        let photosVC = PhotosViewController(collectionViewLayout: UICollectionViewLayout())
-        let favoritesVC = FavoritesViewController(collectionViewLayout: UICollectionViewLayout())
+        let photosVC = PhotosViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let favoritesVC = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
         
         let navigationPhotosVC = createNavigationViewController(rootVC: photosVC, title: "Фото", image: createImageIcon(nameImage: "photo.on.rectangle"))
         let navigationFavoritesVC = createNavigationViewController(rootVC: favoritesVC, title: "Избранное", image: createImageIcon(nameImage: "suit.heart.fill"))

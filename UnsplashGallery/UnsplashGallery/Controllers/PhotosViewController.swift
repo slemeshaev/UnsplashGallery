@@ -38,9 +38,9 @@ class PhotosViewController: UICollectionViewController {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
+        setupSearchBar()
         setupNavigationBar()
         setupCollectionView()
-        setupSearchBar()
     }
     
     // MARK: - Overrides functions
@@ -82,8 +82,10 @@ class PhotosViewController: UICollectionViewController {
     private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
+        //seacrhController.searchBar.delegate = self
     }
     
 }
