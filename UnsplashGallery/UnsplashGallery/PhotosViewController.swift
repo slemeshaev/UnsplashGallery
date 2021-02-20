@@ -13,10 +13,20 @@ class PhotosViewController: UICollectionViewController {
     
     private static let reuseId = "PhotosCollectionCell"
     
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "PHOTOS"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         collectionView.backgroundColor = .orange
+        setupNavigationBar()
+        setupCollectionView()
     }
     
     // MARK: - Overrides functions
@@ -35,6 +45,14 @@ class PhotosViewController: UICollectionViewController {
     
     private func setupCollectionView() {
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PhotosViewController.reuseId)
+    }
+    
+    private func setupNavigationBar() {
+        let label = UILabel()
+        label.text = "PHOTOS"
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
     
 }

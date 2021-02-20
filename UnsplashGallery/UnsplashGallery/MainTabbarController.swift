@@ -14,7 +14,7 @@ class MainTabbarController: UITabBarController {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        let photosVC = PhotosCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+        let photosVC = PhotosViewController(collectionViewLayout: UICollectionViewLayout())
         let favoritesVC = FavoritesViewController()
         
         let navigationPhotosVC = createNavigationViewController(rootVC: photosVC, title: "Фото", image: createImageIcon(nameImage: "photo.on.rectangle"))
