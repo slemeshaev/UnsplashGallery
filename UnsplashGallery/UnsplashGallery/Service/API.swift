@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct API {
+    static let scheme = "https"
+    static let host = "api.unsplash.com"
+    static let path = "/search/photos"
+}

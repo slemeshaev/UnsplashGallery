@@ -35,6 +35,8 @@ class PhotosViewController: UICollectionViewController {
         return barButtonItem
     }()
     
+    private var networkService = NetworkService()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -95,6 +97,8 @@ class PhotosViewController: UICollectionViewController {
 
 extension PhotosViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("SearchText: \(searchText)")
+        networkService.request(searchTerm: searchText) { (_, _) in
+            print("123")
+        }
     }
 }
