@@ -85,8 +85,16 @@ class PhotosViewController: UICollectionViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        //seacrhController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.delegate = self
     }
     
 }
 
+// MARK: - SearchBarDelegate
+
+extension PhotosViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("SearchText: \(searchText)")
+    }
+}
