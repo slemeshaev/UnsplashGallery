@@ -35,6 +35,8 @@ class PhotosViewController: UICollectionViewController {
         return barButtonItem
     }()
     
+    private var networkService = NetworkService()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -85,8 +87,18 @@ class PhotosViewController: UICollectionViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
-        //seacrhController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Поиск"
+        searchController.searchBar.delegate = self
     }
     
 }
 
+// MARK: - SearchBarDelegate
+
+extension PhotosViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        networkService.request(searchTerm: searchText) { (_, _) in
+            print("123")
+        }
+    }
+}
