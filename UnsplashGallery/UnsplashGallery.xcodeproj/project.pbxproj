@@ -41,6 +41,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		662BCB7325E16FFB00AB91E1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				66563A8125E059B700FABF34 /* MainTabbarController.swift */,
+				66563A8525E05B6800FABF34 /* PhotosViewController.swift */,
+				66563A8825E067B100FABF34 /* FavoritesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		66563A5E25E0590000FABF34 = {
 			isa = PBXGroup;
 			children = (
@@ -62,9 +72,7 @@
 			children = (
 				66563A6A25E0590000FABF34 /* AppDelegate.swift */,
 				66563A6C25E0590000FABF34 /* SceneDelegate.swift */,
-				66563A8525E05B6800FABF34 /* PhotosViewController.swift */,
-				66563A8825E067B100FABF34 /* FavoritesViewController.swift */,
-				66563A8125E059B700FABF34 /* MainTabbarController.swift */,
+				662BCB7325E16FFB00AB91E1 /* Controllers */,
 				66563A7025E0590000FABF34 /* Main.storyboard */,
 				66563A7325E0590100FABF34 /* Assets.xcassets */,
 				66563A7525E0590100FABF34 /* LaunchScreen.storyboard */,

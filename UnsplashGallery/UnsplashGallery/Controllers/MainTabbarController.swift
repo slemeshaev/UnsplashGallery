@@ -14,16 +14,20 @@ class MainTabbarController: UITabBarController {
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
-        let photosVC = PhotosViewController(collectionViewLayout: UICollectionViewLayout())
-        let favoritesVC = FavoritesViewController()
+        setupNavigationControllers()
+    }
+    
+    // MARK: - Helpers
+    
+    private func setupNavigationControllers() {
+        let photosVC = PhotosViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let favoritesVC = FavoritesViewController(collectionViewLayout: UICollectionViewFlowLayout())
         
         let navigationPhotosVC = createNavigationViewController(rootVC: photosVC, title: "Фото", image: createImageIcon(nameImage: "photo.on.rectangle"))
         let navigationFavoritesVC = createNavigationViewController(rootVC: favoritesVC, title: "Избранное", image: createImageIcon(nameImage: "suit.heart.fill"))
         
         viewControllers = [navigationPhotosVC, navigationFavoritesVC]
     }
-    
-    // MARK: - Helpers
     
     private func createNavigationViewController(rootVC: UIViewController, title: String, image: UIImage) -> UIViewController {
         let navigationVC = UINavigationController(rootViewController: rootVC)
