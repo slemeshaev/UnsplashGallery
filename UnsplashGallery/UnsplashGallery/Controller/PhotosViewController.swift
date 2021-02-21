@@ -56,9 +56,9 @@ class PhotosViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosViewController.reuseId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCell.reuseId, for: indexPath) as! PhotosCell
         let unsplashPhoto = photos[indexPath.item]
-        cell.backgroundColor = .blue
+        cell.unsplashPhoto = unsplashPhoto
         return cell
     }
     
@@ -75,7 +75,7 @@ class PhotosViewController: UICollectionViewController {
     // MARK: - Helpers
     
     private func setupCollectionView() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: PhotosViewController.reuseId)
+        collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: PhotosCell.reuseId)
         collectionView.backgroundColor = .orange
     }
     

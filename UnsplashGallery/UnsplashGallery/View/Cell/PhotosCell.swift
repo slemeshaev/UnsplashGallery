@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PhotosCell: UICollectionViewCell {
     
@@ -32,7 +33,8 @@ class PhotosCell: UICollectionViewCell {
     var unsplashPhoto: UnsplashPhoto! {
         didSet {
             let photoUrl = unsplashPhoto.urls["regular"]
-            
+            guard let imageUrl = photoUrl, let url = URL(string: imageUrl) else { return }
+            photoImageView.kf.setImage(with: url)
         }
     }
     

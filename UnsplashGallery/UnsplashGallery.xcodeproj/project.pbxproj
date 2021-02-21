@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,7 @@
 		66563A8625E05B6800FABF34 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66563A8525E05B6800FABF34 /* PhotosViewController.swift */; };
 		66563A8925E067B100FABF34 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66563A8825E067B100FABF34 /* FavoritesViewController.swift */; };
 		66AEB41F25E2495700903879 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AEB41E25E2495700903879 /* PhotosCell.swift */; };
+		66AEB42625E25C1300903879 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 66AEB42525E25C1300903879 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AEB42625E25C1300903879 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +146,9 @@
 			dependencies = (
 			);
 			name = UnsplashGallery;
+			packageProductDependencies = (
+				66AEB42525E25C1300903879 /* Kingfisher */,
+			);
 			productName = UnsplashGallery;
 			productReference = 66563A6725E0590000FABF34 /* UnsplashGallery.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 66563A5E25E0590000FABF34;
+			packageReferences = (
+				66AEB42425E25C1300903879 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 66563A6825E0590000FABF34 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,6 +419,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		66AEB42425E25C1300903879 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		66AEB42525E25C1300903879 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 66AEB42425E25C1300903879 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 66563A5F25E0590000FABF34 /* Project object */;
 }
