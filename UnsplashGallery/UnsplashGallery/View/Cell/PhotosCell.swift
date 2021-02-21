@@ -29,6 +29,13 @@ class PhotosCell: UICollectionViewCell {
         return imageView
     }()
     
+    var unsplashPhoto: UnsplashPhoto! {
+        didSet {
+            let photoUrl = unsplashPhoto.urls["regular"]
+            
+        }
+    }
+    
     override var isSelected: Bool {
         didSet {
             updateSelectedState()
