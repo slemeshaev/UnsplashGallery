@@ -38,6 +38,8 @@ class PhotosViewController: UICollectionViewController {
     private var networkDataFetcher = NetworkDataFetcher()
     private var timer: Timer?
     private var photos = [UnsplashPhoto]()
+    private let itemsPerRow: CGFloat = 2
+    private let sectionInsets = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
     
     // MARK: - Lifecycle
     
@@ -76,7 +78,8 @@ class PhotosViewController: UICollectionViewController {
     
     private func setupCollectionView() {
         collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: PhotosCell.reuseId)
-        collectionView.backgroundColor = .orange
+        collectionView.backgroundColor = .white
+        collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     private func setupNavigationBar() {
@@ -104,7 +107,23 @@ extension PhotosViewController: UISearchBarDelegate {
             self.networkDataFetcher.fetchImages(searchTerm: searchText) { [weak self] (searchResults) in
                 guard let fetchedPhotos = searchResults else { return }
                 self?.photos = fetchedPhotos.results
+                self?.collectionView.reloadData()
             }
         })
     }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let photo = photos[indexPath.item]
+        let
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        <#code#>
+    }
+    
 }
