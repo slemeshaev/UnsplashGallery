@@ -37,6 +37,7 @@ class PhotosViewController: UICollectionViewController {
     
     private var networkDataFetcher = NetworkDataFetcher()
     private var timer: Timer?
+    private var photos = [UnsplashPhoto]()
     
     // MARK: - Lifecycle
     
@@ -50,12 +51,14 @@ class PhotosViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return photos.count
     }
     
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosViewController.reuseId, for: indexPath)
+        let unsplashPhoto = photos[indexPath.item]
+        //cell
         cell.backgroundColor = .blue
         return cell
     }
@@ -99,10 +102,9 @@ class PhotosViewController: UICollectionViewController {
 extension PhotosViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
-            self.networkDataFetcher.fetchImages(searchTerm: searchText) { (searchResults) in
-                searchResults?.results.map({ (photo) in
-                    print(photo.urls["small"])
-                })
+            self.networkDataFetcher.fetchImages(searchTerm: searchText) { [weak self] (searchResults) in
+                guard let fetchedPhotos = searchResults else { return }
+                self?.photos = fetchedPhotos.results
             }
         })
     }
