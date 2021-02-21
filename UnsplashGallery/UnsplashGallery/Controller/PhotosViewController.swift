@@ -80,6 +80,7 @@ class PhotosViewController: UICollectionViewController {
         collectionView.register(PhotosCell.self, forCellWithReuseIdentifier: PhotosCell.reuseId)
         collectionView.backgroundColor = .white
         collectionView.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.contentInsetAdjustmentBehavior = .automatic
     }
     
     private func setupNavigationBar() {
@@ -119,11 +120,19 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let photo = photos[indexPath.item]
-        let
+        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        let height = CGFloat(photo.height) * widthPerItem / CGFloat(photo.width)
+        return CGSize(width: widthPerItem, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        <#code#>
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
     
 }
