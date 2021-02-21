@@ -36,6 +36,7 @@ class PhotosViewController: UICollectionViewController {
     }()
     
     private var networkDataFetcher = NetworkDataFetcher()
+    private var timer: Timer?
     
     // MARK: - Lifecycle
     
@@ -97,10 +98,12 @@ class PhotosViewController: UICollectionViewController {
 
 extension PhotosViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        networkDataFetcher.fetchImages(searchTerm: searchText) { (searchResults) in
-            searchResults?.results.map({ (photo) in
-                print(photo.urls["small"])
-            })
-        }
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
+            self.networkDataFetcher.fetchImages(searchTerm: searchText) { (searchResults) in
+                searchResults?.results.map({ (photo) in
+                    print(photo.urls["small"])
+                })
+            }
+        })
     }
 }
