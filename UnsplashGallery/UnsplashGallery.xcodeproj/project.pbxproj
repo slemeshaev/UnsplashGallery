@@ -19,6 +19,7 @@
 		66563A8225E059B700FABF34 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66563A8125E059B700FABF34 /* MainTabbarController.swift */; };
 		66563A8625E05B6800FABF34 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66563A8525E05B6800FABF34 /* PhotosViewController.swift */; };
 		66563A8925E067B100FABF34 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66563A8825E067B100FABF34 /* FavoritesViewController.swift */; };
+		66AEB41F25E2495700903879 /* PhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AEB41E25E2495700903879 /* PhotosCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		66563A8125E059B700FABF34 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		66563A8525E05B6800FABF34 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		66563A8825E067B100FABF34 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		66AEB41E25E2495700903879 /* PhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,14 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		662BCB7325E16FFB00AB91E1 /* Controllers */ = {
+		662BCB7325E16FFB00AB91E1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				66563A8125E059B700FABF34 /* MainTabbarController.swift */,
 				66563A8525E05B6800FABF34 /* PhotosViewController.swift */,
 				66563A8825E067B100FABF34 /* FavoritesViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		662BCB7925E1994E00AB91E1 /* Service */ = {
@@ -99,7 +101,8 @@
 				66563A6A25E0590000FABF34 /* AppDelegate.swift */,
 				66563A6C25E0590000FABF34 /* SceneDelegate.swift */,
 				662BCB8425E1A43600AB91E1 /* Model */,
-				662BCB7325E16FFB00AB91E1 /* Controllers */,
+				66AEB41B25E2492D00903879 /* View */,
+				662BCB7325E16FFB00AB91E1 /* Controller */,
 				662BCB7925E1994E00AB91E1 /* Service */,
 				66563A7025E0590000FABF34 /* Main.storyboard */,
 				66563A7325E0590100FABF34 /* Assets.xcassets */,
@@ -107,6 +110,22 @@
 				66563A7825E0590100FABF34 /* Info.plist */,
 			);
 			path = UnsplashGallery;
+			sourceTree = "<group>";
+		};
+		66AEB41B25E2492D00903879 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66AEB41D25E2493F00903879 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66AEB41D25E2493F00903879 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				66AEB41E25E2495700903879 /* PhotosCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +206,7 @@
 				662BCB7725E1994700AB91E1 /* NetworkService.swift in Sources */,
 				66563A8625E05B6800FABF34 /* PhotosViewController.swift in Sources */,
 				662BCB8625E1A45000AB91E1 /* SearchResults.swift in Sources */,
+				66AEB41F25E2495700903879 /* PhotosCell.swift in Sources */,
 				662BCB7D25E19CAA00AB91E1 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
