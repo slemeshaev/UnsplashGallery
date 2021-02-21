@@ -58,7 +58,6 @@ class PhotosViewController: UICollectionViewController {
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosViewController.reuseId, for: indexPath)
         let unsplashPhoto = photos[indexPath.item]
-        //cell
         cell.backgroundColor = .blue
         return cell
     }
