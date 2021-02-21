@@ -15,14 +15,15 @@ class PhotosCell: UICollectionViewCell {
     static let reuseId = "PhotosCell"
     
     private let checkMark: UIImageView = {
-        let image = UIImage(systemName: "checkmark.circle")
+        let image = UIImage(systemName: "checkmark.circle.fill")
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         imageView.alpha = 0
         return imageView
     }()
     
-    private let photoImageView: UIImageView = {
+    let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)
