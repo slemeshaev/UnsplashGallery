@@ -19,6 +19,10 @@ class FavoritesViewController: UICollectionViewController {
         return label
     }()
     
+    private lazy var trashBarButtonItem: UIBarButtonItem = {
+        return UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil)
+    }()
+    
     private let enterSearchTermLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас еще нет добавленных фотографий..."
@@ -30,7 +34,7 @@ class FavoritesViewController: UICollectionViewController {
         return label
     }()
     
-    private var photos = [UnsplashPhoto]()
+    var photos = [UnsplashPhoto]()
     
     // MARK: - Lifecycle
     
@@ -78,8 +82,16 @@ class FavoritesViewController: UICollectionViewController {
     
     private func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: titleLabel)
-        //navigationItem.rightBarButtonItem = trashBarButtonItem
-        //trashBarButtonItem.isEnabled = false
+        navigationItem.rightBarButtonItem = trashBarButtonItem
+        trashBarButtonItem.isEnabled = false
     }
     
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension FavoritesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width
+        return CGSize(width: width/3 - 1, height: width/3 - 1)
+    }
 }
