@@ -109,15 +109,15 @@ class PhotosViewController: UICollectionViewController {
     // MARK: - Actions
     
     @objc func addBarButtonTapped() {
-        let selectedPhotos = collectionView.indexPathsForSelectedItems?.reduce([], { (photosss, indexPath) -> [UnsplashPhoto] in
-            var mutablePhotos = photosss
+        let selectedPhotos = collectionView.indexPathsForSelectedItems?.reduce([], { (images, indexPath) -> [UnsplashPhoto] in
+            var mutablePhotos = images
             let photo = photos[indexPath.item]
             mutablePhotos.append(photo)
             return mutablePhotos
         })
         
         let alertController = UIAlertController(title: "", message: "\(selectedPhotos!.count) фото будут добавлены в альбом", preferredStyle: .alert)
-        let add = UIAlertAction(title: "Добавить", style: .default) { (action) in
+        let addAlertAction = UIAlertAction(title: "Добавить", style: .default) { (action) in
             let tabbar = self.tabBarController as! MainTabbarController
             let navigationVC = tabbar.viewControllers?[1] as! UINavigationController
             let favoritesVC = navigationVC.topViewController as! FavoritesViewController
@@ -127,8 +127,9 @@ class PhotosViewController: UICollectionViewController {
             
             self.refresh()
         }
+        
         let cancel = UIAlertAction(title: "Отменить", style: .cancel) { (action) in }
-        alertController.addAction(add)
+        alertController.addAction(addAlertAction)
         alertController.addAction(cancel)
         present(alertController, animated: true)
     }

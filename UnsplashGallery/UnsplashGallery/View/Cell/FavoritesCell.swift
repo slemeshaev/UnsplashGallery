@@ -25,7 +25,7 @@ class FavoritesCell: UICollectionViewCell {
     
     var unsplashPhoto: UnsplashPhoto! {
         didSet {
-            let photoUrl = unsplashPhoto.urls["regular"] // спорный момент, лично для меня
+            let photoUrl = unsplashPhoto.urls["regular"]
             guard let imageUrl = photoUrl, let url = URL(string: imageUrl) else { return }
             myImageView.kf.setImage(with: url)
         }
