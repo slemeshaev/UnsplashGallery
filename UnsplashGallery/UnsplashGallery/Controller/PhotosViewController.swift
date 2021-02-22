@@ -35,6 +35,23 @@ class PhotosViewController: UICollectionViewController {
         return barButtonItem
     }()
     
+    private let enterSearchTermLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Пожалуйста, введите поисковый запрос выше..."
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.textColor = .gray
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
     private var numberOfSelectedPhotos: Int {
         return collectionView.indexPathsForSelectedItems?.count ?? 0
     }
@@ -53,12 +70,15 @@ class PhotosViewController: UICollectionViewController {
         setupNavigationBar()
         setupCollectionView()
         updateNavButtonsState()
+        setupEnterLabel()
+        setupSpinner()
     }
     
     // MARK: - Overrides functions
     
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
+        enterSearchTermLabel.isHidden = photos.count != 0
         return photos.count
     }
     
@@ -129,6 +149,20 @@ class PhotosViewController: UICollectionViewController {
         searchController.searchBar.delegate = self
     }
     
+    private func setupEnterLabel() {
+        collectionView.addSubview(enterSearchTermLabel)
+        enterSearchTermLabel.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        enterSearchTermLabel.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 50).isActive = true
+        enterSearchTermLabel.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 15).isActive = true
+        enterSearchTermLabel.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -15).isActive = true
+    }
+    
+    private func setupSpinner() {
+        view.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
+    }
+    
     private func updateNavButtonsState() {
         addBarButtonItem.isEnabled = numberOfSelectedPhotos > 0
         actionBarButtonItem.isEnabled = numberOfSelectedPhotos > 0
@@ -146,10 +180,12 @@ class PhotosViewController: UICollectionViewController {
 
 extension PhotosViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.spinner.startAnimating()
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { (_) in
             self.networkDataFetcher.fetchImages(searchTerm: searchText) { [weak self] (searchResults) in
                 guard let fetchedPhotos = searchResults else { return }
+                self?.spinner.stopAnimating()
                 self?.photos = fetchedPhotos.results
                 self?.collectionView.reloadData()
                 self?.refresh()
